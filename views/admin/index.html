@@ -12,7 +12,40 @@
 <body>
     <header></header>
     <main>
-        
+        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0" id="ingresar-us">
+            <!-- logo de la empresa -->
+            <img src="../../resources/img/gible-shiny.gif" alt="logo" id="logo" width="200px" class="pb-4">
+            <!-- caja de contenido -->
+            <div class="w-full rounded-lg ring-1 ring-[#333399] shadow-2xl shadow-black md:mt-0 sm:max-w-md xl:p-0">
+                <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                    <!-- Formulario para ingresar las credenciales del usuario -->
+                    <form method="post" id="flogin" class="space-y-4 md:space-y-6" action="#">
+                        <!-- textbox para ingresar usuario -->
+                        <div>
+                            <label id="uslabel" for="us" class="block mb-2 text-sm font-medium text-white">Usuario</label>
+                            <input type="text" name="us" id="us"
+                                class="bg-[#1E1E1E] border border-white text-white sm:text-sm rounded-lg focus:ring-[#333399] focus:border-[#333399] block w-full p-2.5"
+                                placeholder="Ingrese su usuario" required="" autocomplete="off">
+                        </div>
+                        <!-- Ingresar clave -->
+                        <div>
+                            <label id="clavelabel" for="us" class="block mb-2 text-sm font-medium text-white">Contraseña</label>
+                            <input type="password" name="us" id="us"
+                                class="bg-[#1E1E1E] border border-white text-white sm:text-sm rounded-lg focus:ring-[#333399] focus:border-[#333399] block w-full p-2.5"
+                                placeholder="Ingrese su contraseña" required="" autocomplete="off">
+                        </div>                             
+                        <div class="flex">
+                            <!-- Acceder a recuperación de clave -->
+                            <a onclick="abrirRecuperacion()"
+                                class="text-sm font-medium text-white hover:underline dark:text-primary-500">¿Olvidaste tu contraseña?</a>
+                        </div>
+                        <!-- boton para ingersar -->
+                        <button type="submit" id="btn-ingresar"
+                            class="w-full ring-1 ring-[#333399] text-[#333399] font-medium focus:ring-4 focus:ring-white rounded-lg px-5 py-2.5 text-center hover:bg-[#333399] hover:text-white">Ingresar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </main>
     <footer></footer>
 
