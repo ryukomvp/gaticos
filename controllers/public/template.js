@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     HEADER.innerHTML = `
         <nav class="border-b border-[#EDEDED]">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <a href="../../../views/public/public/easter-egg.html" class="flex items-center">
+                <a href="../../../views/public/easter-egg.html" class="flex items-center">
                     <img src="https://img.icons8.com/ios-filled/50/EDEDED/pet-commands-train.png" class="h-8 mr-3" alt="Logo">
                     <span class="self-center text-[#EDEDED] text-2xl font-semibold whitespace-nowrap">Los gaticos</span>
                 </a>
