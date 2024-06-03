@@ -1,14 +1,12 @@
 URL del sitio:
-http://localhost/portfolio/views/index.html
+http://localhost/gaticos/views/public/index.html
+http://localhost/gaticos/views/admin/index.html
 
-Comandos para ejecutar el archivo css
+Comandos para ejecutar el archivo css de tailwind
 npx tailwindcss -i ./input.css -o ./resources/css/tailwind.css --watch
 
-Enlace paleta de colores
-https://colorhunt.co/palette/171717444444da0037ededed
-
 Paleta de colores auxiliar
-1- AZUL FONDO #333399 [51, 51, 153]
-2- CIAN #32CAF9 [50, 202, 249]
-3- CIAN CLARO #47E5F5 [71, 229, 245]
-4- BLANCO #FCFCFC [252, 252, 252]
+1- GRIS FONDO #1E1E1E
+2- GRIS CLARO #313131
+3- AZUL #333399
+4- BLANCO #EDEDED
