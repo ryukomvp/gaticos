@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS solicitudes_registro (
     id_raza INT NOT NULL,
     color VARCHAR(25) NOT NULL,
     id_estado INT NOT NULL,
-    correo_responsable VARCHAR(125) NOT NULL,
+    correo_responsable VARCHAR(120) NOT NULL,
 
     CONSTRAINT fk_raza_solicitud
     FOREIGN KEY (id_raza)
@@ -41,3 +41,28 @@ CREATE TABLE IF NOT EXISTS gaticos (
     FOREIGN KEY (id_raza)
     REFERENCES razas(id_raza) ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+CREATE TABLE IF NOT EXISTS usuarios (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    usuario VARCHAR(40) NOT NULL UNIQUE,
+    clave VARCHAR(200) NOT NULL,
+    correo VARCHAR(120) NOT NULL,
+);
+
+CREATE TABLE IF NOT EXISTS bitacoras (
+    id_bitacora INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    id_usuario INT NOT NULL,
+    id_solicitud INT NOT NULL,
+
+    CONSTRAINT fk_usuario_bitacora
+    FOREIGN KEY (id_usuario)
+    REFERENCES usuarios(id_usuario) ON UPDATE CASCADE ON DELETE CASCADE,
+
+    CONSTRAINT fk_solicitud_bitacora
+    FOREIGN KEY (id_solicitud)
+    REFERENCES solicitudes_registro(id_solicitud) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+INSERT INTO solicitudes_registro
+VALUES  ('aceptada'),
+        ('rechazada');
