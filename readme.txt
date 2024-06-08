@@ -1,6 +1,6 @@
 URL del sitio:
-http://localhost/gaticos/views/public/index.html
-http://localhost/gaticos/views/admin/index.html
+Sitio público: http://localhost/gaticos/views/public/index.html
+Sitio administrador: http://localhost/gaticos/views/admin/index.html
 
 Comandos para ejecutar el archivo css de tailwind
 npx tailwindcss -i ./input.css -o ./resources/css/tailwind.css --watch
