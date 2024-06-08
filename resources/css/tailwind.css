@@ -1125,6 +1125,18 @@ input:checked + .toggle-bg {
   top: 50%;
 }
 
+.top-1 {
+  top: 0.25rem;
+}
+
+.top-10 {
+  top: 2.5rem;
+}
+
+.top-24 {
+  top: 6rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -1213,6 +1225,14 @@ input:checked + .toggle-bg {
 
 .mt-24 {
   margin-top: 6rem;
+}
+
+.mt-48 {
+  margin-top: 12rem;
+}
+
+.mt-20 {
+  margin-top: 5rem;
 }
 
 .block {

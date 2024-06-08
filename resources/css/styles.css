@@ -10,6 +10,11 @@ body {
   min-height: 100%;
 }
 
+main {
+  margin-top: 90px;
+  margin-bottom: 15px;
+}
+
 footer {
   margin-top: auto;
 }
