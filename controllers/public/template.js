@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     BODY.classList.add('bg-[#1E1E1E]');
     MAIN.classList.add('py-4', 'container');
     HEADER.innerHTML = `
-        <nav class="border-b border-[#EDEDED]">
+        <nav class="bg-[#1E1E1E] fixed w-full z-20 top-0 start-0 border-b border-[#EDEDED]">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a href="../../../views/public/easter-egg.html" class="flex items-center">
                     <img src="https://img.icons8.com/ios-filled/50/EDEDED/pet-commands-train.png" class="h-8 mr-3" alt="Logo">
