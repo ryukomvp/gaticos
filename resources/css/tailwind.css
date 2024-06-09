@@ -1149,8 +1149,28 @@ input:checked + .toggle-bg {
   grid-column-start: 2;
 }
 
+.col-start-1 {
+  grid-column-start: 1;
+}
+
+.col-start-4 {
+  grid-column-start: 4;
+}
+
 .col-end-3 {
   grid-column-end: 3;
+}
+
+.col-end-2 {
+  grid-column-end: 2;
+}
+
+.col-end-4 {
+  grid-column-end: 4;
+}
+
+.col-end-5 {
+  grid-column-end: 5;
 }
 
 .mx-auto {
@@ -1192,6 +1212,15 @@ input:checked + .toggle-bg {
 
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+
+.ms-2 {
+  -webkit-margin-start: 0.5rem;
+          margin-inline-start: 0.5rem;
 }
 
 .block {
@@ -1266,6 +1295,18 @@ input:checked + .toggle-bg {
   height: 1px;
 }
 
+.h-\[30px\] {
+  height: 30px;
+}
+
+.h-3 {
+  height: 0.75rem;
+}
+
+.h-3\.5 {
+  height: 0.875rem;
+}
+
 .w-1\/2 {
   width: 50%;
 }
@@ -1294,6 +1335,18 @@ input:checked + .toggle-bg {
   width: 100%;
 }
 
+.w-\[30px\] {
+  width: 30px;
+}
+
+.w-3 {
+  width: 0.75rem;
+}
+
+.w-3\.5 {
+  width: 0.875rem;
+}
+
 .max-w-lg {
   max-width: 32rem;
 }
@@ -1304,6 +1357,10 @@ input:checked + .toggle-bg {
 
 .max-w-screen-xl {
   max-width: 1280px;
+}
+
+.max-w-sm {
+  max-width: 24rem;
 }
 
 .flex-1 {
@@ -1430,6 +1487,10 @@ input:checked + .toggle-bg {
   justify-content: space-between;
 }
 
+.gap-4 {
+  gap: 1rem;
+}
+
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
@@ -1482,6 +1543,11 @@ input:checked + .toggle-bg {
   border-bottom-right-radius: 0.5rem;
 }
 
+.rounded-t-lg {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
 .border {
   border-width: 1px;
 }
@@ -1531,6 +1597,16 @@ input:checked + .toggle-bg {
 .border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.border-green-700 {
+  --tw-border-opacity: 1;
+  border-color: rgb(4 108 78 / var(--tw-border-opacity));
+}
+
+.border-gray-200 {
+  --tw-border-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
 
 .bg-\[\#171717\] {
@@ -1611,6 +1687,10 @@ input:checked + .toggle-bg {
   padding: 1.5rem;
 }
 
+.p-5 {
+  padding: 1.25rem;
+}
+
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -1649,6 +1729,11 @@ input:checked + .toggle-bg {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .pb-4 {
@@ -1718,12 +1803,24 @@ input:checked + .toggle-bg {
   font-weight: 600;
 }
 
+.font-bold {
+  font-weight: 700;
+}
+
+.font-normal {
+  font-weight: 400;
+}
+
 .leading-6 {
   line-height: 1.5rem;
 }
 
 .leading-9 {
   line-height: 2.25rem;
+}
+
+.tracking-tight {
+  letter-spacing: -0.025em;
 }
 
 .text-\[\#333399\] {
@@ -1759,6 +1856,16 @@ input:checked + .toggle-bg {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-green-700 {
+  --tw-text-opacity: 1;
+  color: rgb(4 108 78 / var(--tw-text-opacity));
+}
+
+.text-gray-700 {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -1886,6 +1993,11 @@ input:checked + .toggle-bg {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-green-800:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(3 84 63 / var(--tw-bg-opacity));
+}
+
 .hover\:text-\[\#333399\]:hover {
   --tw-text-opacity: 1;
   color: rgb(51 51 153 / var(--tw-text-opacity));
@@ -1913,6 +2025,11 @@ input:checked + .toggle-bg {
 
 .hover\:underline:hover {
   text-decoration-line: underline;
+}
+
+.focus\:border-\[\#171717\]:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(23 23 23 / var(--tw-border-opacity));
 }
 
 .focus\:border-\[\#333399\]:focus {
@@ -1955,6 +2072,11 @@ input:checked + .toggle-bg {
 .focus\:ring-white:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(255 255 255 / var(--tw-ring-opacity));
+}
+
+:is([dir="rtl"] .rtl\:rotate-180) {
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 :is([dir="rtl"] .rtl\:space-x-reverse) > :not([hidden]) ~ :not([hidden]) {
@@ -2051,6 +2173,11 @@ input:checked + .toggle-bg {
 :is(.dark .dark\:hover\:text-white:hover) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+:is(.dark .dark\:focus\:ring-blue-800:focus) {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(30 66 159 / var(--tw-ring-opacity));
 }
 
 @media (min-width: 640px) {

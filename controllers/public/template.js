@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     HEADER.innerHTML = `
         <nav class="bg-[#1E1E1E] fixed w-full z-20 top-0 start-0 border-b border-[#EDEDED]">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <a href="../../../views/public/easter-egg.html" class="flex items-center">
+                <a href="../../../views/public/easter-egg.html" class="bg-[#171717] p-2 rounded-lg flex items-center">
                     <img src="https://img.icons8.com/ios-filled/50/EDEDED/pet-commands-train.png" class="h-8 mr-3" alt="Logo">
                     <span class="self-center text-[#EDEDED] text-2xl font-semibold whitespace-nowrap">Los gaticos</span>
                 </a>
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </svg>
                 </button>
                 <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-                    <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium md:flex-row md:space-x-8 md:mt-0 md:border-0">
+                    <ul class="bg-[#313131] rounded-lg flex flex-col p-4 md:p-0 mt-4 font-medium md:flex-row md:space-x-8 md:mt-0 md:border-0">
                         <li>
                         <a href="../../views/public/index.html" class="block py-2 pl-3 pr-4 text-[#EDEDED] hover:text-[#333399] hover:underline decoration-[#333399]" aria-current="page">Inicio</a>
                         </li>
