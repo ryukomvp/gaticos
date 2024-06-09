@@ -12,49 +12,48 @@
 <body>
     <header></header>
     <main>
-        <div class="bg-[#171717] rounded-lg p-4">
-            <ol class="flex items-center w-full text-sm font-medium text-center text-white">
-                <li class="flex md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10">Ingresar información</li>
-                <li class="flex md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10">Confirmar solicitud de registro</li>
-                <li class="flex items-center">Esperar respuesta</li>
+        <div class="bg-[#171717] rounded-lg p-4 text-center">
+            <div class="grid md:grid-cols-3 items-center">
+                <p class="text-2xl text-white bg-[#313131] rounded-lg p-1 md:col-start-2 md:col-end-3">Pasos para registrar a tu gato</p>
+            </div>
+            <ol class="flex items-center w-full text-sm font-medium text-center text-white mt-4">
+                <li class="flex md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10"><span class="bg-[#333399] px-2 rounded-xl me-2">1</span>Ingresar información</li>
+                <li class="flex md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10"><span class="bg-[#333399] px-2 rounded-xl me-2">2</span>Enviar solicitud</li>
+                <li class="flex items-center"><span class="bg-[#333399] px-2 rounded-xl me-2">3</span>Esperar respuesta</li>
             </ol>
         </div>
         <form class="bg-[#313131] rounded-lg p-4 mt-4" method="post" id="exeform">
-            <div class="text-white grid mb-4 grid-cols-1 md:grid-cols-2">
+            <div class="text-white grid gap-4 mb-4 grid-cols-1 md:grid-cols-2">
                 <!-- nombre del gato -->
                 <div>
-                    <label for="age"
-                        class="block mb-2 text-sm font-semibold text-[#171717]">Nombre de tu gato</label>
+                    <label for="age" class="block mb-2 text-lg font-semibold text-[#171717]">Nombre de tu gato</label>
                     <input type="text" id="age" name="age"
-                        class="bg-[#313131] focus:bg-[#171717] border border-white text-sm rounded-lg focus:ring-[#333399] focus:border-[#333399] block w-full p-2.5"
+                        class="bg-[#313131] border border-white text-sm rounded-lg focus:ring-[#333399] focus:border-[#333399] block w-full p-2.5"
                         placeholder="Ingresa el nombre de tu gatico" required>
                 </div>
                 <!-- edad del gato -->
                 <div>
-                    <label for="age"
-                        class="block mb-2 text-sm font-semibold text-[#171717]">Edad de tu gato</label>
-                    <input type="number" id="age" name="age"
-                        class="bg-[#313131] focus:bg-[#171717] border border-white text-sm rounded-lg focus:ring-[#333399] focus:border-[#333399] block w-full p-2.5"
+                    <label for="edad" class="block mb-2 text-lg font-semibold text-[#171717]">Edad de tu gato</label>
+                    <input type="number" id="edad" name="edad"
+                        class="bg-[#313131] border border-white text-sm rounded-lg focus:ring-[#333399] focus:border-[#333399] block w-full p-2.5"
                         placeholder="Ingresa la edad de tu gatico (puede ser aproximado)" required>
                 </div>
                 <!-- raza del gato -->
                 <div>
-                    <label for="tipo"
-                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Raza de tu gatico</label>
-                    <select id="tipo" name="tipo"
-                        class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5">
+                    <label for="raza" class="block mb-2 text-lg font-semibold text-[#171717]">Raza de tu gatico</label>
+                    <select id="raza" name="raza"
+                        class="bg-[#313131] border border-white text-sm rounded-lg focus:ring-[#333399] focus:border-[#333399] block w-full p-2.5">
                     </select>
                 </div>
                 <!-- contacto responsable del gato -->
                 <div>
-                    <label for="mail"
-                        class="block mb-2 text-sm font-semibold text-[#171717]">Tu correo</label>
-                    <input type="text" id="mail" name="mail"
-                        class="bg-[#313131] focus:bg-[#171717] border border-white text-sm rounded-lg focus:ring-[#333399] focus:border-[#333399] block w-full p-2.5"
+                    <label for="correo" class="block mb-2 text-lg font-semibold text-[#171717]">Tu correo</label>
+                    <input type="email" id="correo" name="correo"
+                        class="bg-[#313131] border border-white text-sm rounded-lg focus:ring-[#333399] focus:border-[#333399] block w-full p-2.5"
                         placeholder="Ingresa tu correo" required>
                 </div>
             </div>
-            <button id="accion" type="submit" class="border border-green-700 text-green-700 hover:bg-green-800 hover:text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center">Confirmar solicitud</button>
+            <button id="accion" type="submit" class="border border-[#333399] text-[#333399] hover:bg-[#333399] hover:text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center">Enviar solicitud</button>
         </form>
     </main>
     <footer></footer>
