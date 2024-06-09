@@ -47,16 +47,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         <div class="2xl:sticky bottom-0 left-0 right-0 p-4 border-t border-[#EDEDED] shadow md:flex md:items-center md:justify-between md:p-6">
             <span class="text-sm text-[#444444] sm:text-center">© 2023. Developed by Daniel Hernandez.
             </span>
-            <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-[#444444] sm:mt-0">
+            <ul class="flex flex-wrap items-center mt-3 gap-4 text-sm font-medium text-[#444444] sm:mt-0">
                 <li>
-                    <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6 text-center inline-flex items-center"  target="_blank"><img src="https://img.icons8.com/ios/25/444444/instagram-new--v1.png" alt="ig"/></a>
+                    <a href="https://www.instagram.com/dnlhernandez_/" class="hover:underline text-center inline-flex items-center"  target="_blank"><img src="https://img.icons8.com/ios/25/444444/instagram-new--v1.png" alt="ig"/></a>
                 </li>
                 <li>
-                    <a href="https://twitter.com/dnlhernandez_" class="mr-4 hover:underline md:mr-6 text-center inline-flex items-center" target="_blank"><img src="https://img.icons8.com/ios/25/444444/twitterx--v1.png" alt="x"/></a>
+                    <a href="https://twitter.com/dnlhernandez_" class=" hover:underline text-center inline-flex items-center" target="_blank"><img src="https://img.icons8.com/ios/25/444444/twitterx--v1.png" alt="x"/></a>
                 </li>
                 <li>
-                <a href="https://github.com/ryukomvp" class="mr-4 hover:underline md:mr-6 text-center inline-flex items-center" target="_blank"><img src="https://img.icons8.com/ios/25/444444/github--v1.png" alt="github"/></a>
-            </li>
+                    <a href="https://github.com/ryukomvp" class="hover:underline text-center inline-flex items-center" target="_blank"><img src="https://img.icons8.com/ios/25/444444/github--v1.png" alt="github"/></a>
+                </li>
             </ul>
         </div>
     `;

@@ -1341,6 +1341,15 @@ input:checked + .toggle-bg {
   width: 100%;
 }
 
+.w-min {
+  width: -moz-min-content;
+  width: min-content;
+}
+
+.w-auto {
+  width: auto;
+}
+
 .max-w-lg {
   max-width: 32rem;
 }
@@ -1718,6 +1727,10 @@ input:checked + .toggle-bg {
 .bg-\[\#EDEDED\] {
   --tw-bg-opacity: 1;
   background-color: rgb(237 237 237 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#1\] {
+  background-color: #1;
 }
 
 .bg-opacity-50 {
