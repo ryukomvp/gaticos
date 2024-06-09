@@ -33,10 +33,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <a href="../../views/admin/main.html" class="block py-2 pl-3 pr-4 text-[#EDEDED] hover:text-[#333399] hover:underline decoration-[#333399]" aria-current="page">Inicio</a>
                         </li>
                         <li>
-                            <a href="../../views/admin/gaticos.html" class="block py-2 pl-3 pr-4 text-[#EDEDED] hover:text-[#333399] hover:underline decoration-[#333399]">Gaticos</a>
+                            <a href="../../views/admin/breeds.html" class="block py-2 pl-3 pr-4 text-[#EDEDED] hover:text-[#333399] hover:underline decoration-[#333399]" aria-current="page">Razas</a>
                         </li>
                         <li>
                             <a href="../../views/admin/requests.html" class="block py-2 pl-3 pr-4 text-[#EDEDED] hover:text-[#333399] hover:underline decoration-[#333399]">Solicitudes</a>
+                        </li>
+                        <li>
+                            <a href="../../views/admin/gaticos.html" class="block py-2 pl-3 pr-4 text-[#EDEDED] hover:text-[#333399] hover:underline decoration-[#333399]">Gaticos</a>
                         </li>
                     </ul>
                 </div>

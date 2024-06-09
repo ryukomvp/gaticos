@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../..//resources/css/tailwind.css" rel="stylesheet">
+    <link href="../../resources/css/styles.css" rel="stylesheet">
+    <link rel="icon" href="https://img.icons8.com/ios-filled/50/EDEDED/pet-commands-train.png">
+    <!-- Título de la página -->
+    <title>Razas</title>
+</head>
+<body>
+    <header></header>
+    <main>
+        <form class="max-w-md mx-auto relative" method="post" id="fbuscador">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <img src="https://img.icons8.com/ios-filled/20/EDEDED/cat-footprint.png" alt="cat-footprint"/>
+            </div>
+            <input type="text" name="buscador" id="buscador" class="w-full bg-[#1E1E1E] border border-[#EDEDED] text-[#EDEDED] focus:border-[#171717] block w-full p-4 ps-10 text-sm rounded-lg focus:ring-[#333399] focus:border-[#333399]" placeholder="Buscar razas">
+            <!-- <button type="submit" class="bg-[#1E1E1E] border border-[#333399] text-[#333399] absolute end-2.5 bottom-2.5 hover:bg-[#333399] hover:text-[#EDEDED] font-medium rounded-lg text-sm px-4 py-2"><svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg></button> -->
+        </form>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
+            <table class="w-full text-sm">
+                <thead class="bg-[#171717] text-xl text-[#EDEDED]">
+                    <tr class="font-semibold text-center">
+                        <th scope="col" class="px-6 py-3">N° de raza</th>
+                        <th scope="col" class="px-6 py-3">Nombre de la raza</th>
+                        <th scope="col" class="px-6 py-3">Información sobre la raza</th>
+                        <th scope="col" class="px-6 py-3">Controles</th>
+                    </tr>
+                </thead>
+                <tbody class="text-justify" id="registros"></tbody>
+            </table>
+        </div>
+    </main>
+    <footer></footer>
+
+    <!-- Importación de archivos javascript -->
+    <script src="../../node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="../../controllers/admin/template.js"></script>
+</body>
+</html>
