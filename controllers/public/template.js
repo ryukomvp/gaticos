@@ -28,15 +28,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </svg>
                 </button>
                 <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-                    <ul class="bg-[#313131] rounded-lg flex flex-col p-4 md:p-0 mt-4 font-medium md:flex-row md:space-x-8 md:mt-0 md:border-0">
-                        <li>
-                        <a href="../../views/public/index.html" class="block py-2 pl-3 pr-4 text-[#EDEDED] hover:text-[#333399] hover:underline decoration-[#333399]" aria-current="page">Inicio</a>
+                    <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium md:flex-row md:space-x-8 md:mt-0 md:border-0">
+                        <li class="rounded-lg hover:bg-[#313131]">
+                            <a href="../../views/public/index.html" class="block py-2 pl-3 pr-4 text-[#EDEDED]" aria-current="page">Inicio</a>
                         </li>
                         <li>
-                        <a href="../../views/public/requests.html" class="block py-2 pl-3 pr-4 text-[#EDEDED] hover:text-[#333399] hover:underline decoration-[#333399]">Registrar un gatico</a>
+                            <a href="../../views/public/requests.html" class="block py-2 pl-3 pr-4 text-[#EDEDED] hover:text-[#333399] hover:underline decoration-[#333399]">Registrar un gatico</a>
                         </li>
                         <li>
-                        <a href="../../views/public/directory.html" class="block py-2 pl-3 pr-4 text-[#EDEDED] hover:text-[#333399] hover:underline decoration-[#333399]">Directorio</a>
+                            <a href="../../views/public/directory.html" class="block py-2 pl-3 pr-4 text-[#EDEDED] hover:text-[#333399] hover:underline decoration-[#333399]">Directorio</a>
                         </li>
                     </ul>
                 </div>
