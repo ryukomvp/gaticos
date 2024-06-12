@@ -74,10 +74,15 @@ async function cargarRegistros(form = null) {
                         <td>${row.id_raza}</td>
                         <td>${row.raza}</td>
                         <td class="p-4">${row.info}</td>
-                        <td>
+                        <td class="flex items-center">
                             <button onclick="actualizarRegistro(${row.id_raza})" class="text-[#333399] border border-[#333399] hover:text-[#EDEDED] hover:bg-[#333399] font-medium rounded-lg text-sm px-2.5 py-2.5 text-center m-2" type="button">
                                 <svg class="w-[30px] h-[30px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 1v5h-5M2 19v-5h5m10-4a8 8 0 0 1-14.947 3.97M1 10a8 8 0 0 1 14.947-3.97"/>
+                                </svg>
+                            </button>
+                            <button onclick="eliminarRegistro(${row.id_raza})" class="text-[#CA3E47] border border-[#CA3E47] hover:text-[#EDEDED] hover:bg-[#CA3E47] font-medium rounded-lg text-sm px-2.5 py-2.5 text-center m-2" type="button">
+                                <svg class="w-[30px] h-[30px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
                                 </svg>
                             </button>
                         </td>
@@ -138,24 +143,24 @@ async function actualizarRegistro(id) {
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
-// async function openDelete(id) {
-//     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-//     const RESPONSE = await confirmAction('¿Desea eliminar la categoría de forma permanente?');
-//     // Se verifica la respuesta del mensaje.
-//     if (RESPONSE) {
-//         // Se define una constante tipo objeto con los datos del registro seleccionado.
-//         const FORM = new FormData();
-//         FORM.append('id_categoria', id);
-//         // Petición para eliminar el registro seleccionado.
-//         const DATA = await fetchData(CATEGORIA_API, 'delete', FORM);
-//         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-//         if (DATA.status) {
-//             // Se carga nuevamente la tabla para visualizar los cambios.
-//             cargarRegistros();
-//             // Se muestra un mensaje de éxito.
-//             sweetAlert(1, DATA.message, true);
-//         } else {
-//             sweetAlert(2, DATA.exception, false);
-//         }
-//     }
-// }
+async function eliminarRegistro(id) {
+    // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
+    const RESPONSE = await confirmAction('¿Desea eliminar la raza de forma permanente?');
+    // Se verifica la respuesta del mensaje.
+    if (RESPONSE) {
+        // Se define una constante tipo objeto con los datos del registro seleccionado.
+        const FORM = new FormData();
+        FORM.append('id_raza', id);
+        // Petición para eliminar el registro seleccionado.
+        const DATA = await fetchData(RAZAS_API, 'eliminar', FORM);
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (DATA.status) {
+            // Se carga nuevamente la tabla para visualizar los cambios.
+            cargarRegistros();
+            // Se muestra un mensaje de éxito.
+            sweetAlert(1, DATA.message, true);
+        } else {
+            sweetAlert(2, DATA.exception, false);
+        }
+    }
+}

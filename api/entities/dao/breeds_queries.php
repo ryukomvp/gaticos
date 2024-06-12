@@ -44,23 +44,20 @@ class RazasQueries
         return Database::getRow($sql, $params);
     }
 
-    // public function updateRow($current_image)
-    // {
-    //     // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
-    //     ($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;
+    public function actualizarRegistro($current_image)
+    {
+        $sql = 'UPDATE razas
+                SET raza = ?, info = ?
+                WHERE id_raza = ?';
+        $params = array($this->raza, $this->info, $this->id);
+        return Database::executeRow($sql, $params);
+    }
 
-    //     $sql = 'UPDATE categoria
-    //             SET imagen_categoria = ?, nombre_categoria = ?, descripcion_categoria = ?
-    //             WHERE id_categoria = ?';
-    //     $params = array($this->imagen, $this->nombre, $this->descripcion, $this->id);
-    //     return Database::executeRow($sql, $params);
-    // }
-
-    // public function deleteRow()
-    // {
-    //     $sql = 'DELETE FROM razas
-    //             WHERE id_raza = ?';
-    //     $params = array($this->id);
-    //     return Database::executeRow($sql, $params);
-    // }
+    public function eliminarRegistro()
+    {
+        $sql = 'DELETE FROM razas
+                WHERE id_raza = ?';
+        $params = array($this->id);
+        return Database::executeRow($sql, $params);
+    }
 }

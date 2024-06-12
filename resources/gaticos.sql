@@ -4,7 +4,7 @@ USE gaticos;
 CREATE TABLE IF NOT EXISTS razas (
 	id_raza INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     raza VARCHAR(40) NOT NULL UNIQUE,
-    info VARCHAR(200) NOT NULL
+    info VARCHAR(250) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS solicitudes_registro (
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
 -- );
 
 INSERT INTO razas(raza, info) VALUES
-    ('Abisinio', 'Los Abisinios son gatos activos y curiosos, con un pelaje corto y denso que generalmente es de color marrón rojizo. Son   conocidos por su apariencia elegante y musculosa, y sus grandes ojos almendrados.'),
+    ('Abisinio', 'Los Abisinios son gatos activos y curiosos, con un pelaje corto y denso que generalmente es de color marrón rojizo. Son conocidos por su apariencia elegante y musculosa, y sus grandes ojos almendrados.'),
     ('American Shorthair', 'Esta raza tiene un cuerpo robusto y musculoso, con un pelaje corto y denso que puede venir en una variedad de colores y patrones. Son conocidos por ser gatos tranquilos y amigables, adaptándose bien a la vida familiar.'),
     ('Bengalí', 'Los gatos Bengalíes tienen un pelaje que se asemeja al de los gatos salvajes, con manchas y rosetas distintivas. Son muy activos, juguetones y tienen un cuerpo atlético.'),
     ('Birmano', 'Los Birmanos tienen un pelaje semilargo, suave y sedoso, con colores que contrastan en las puntas de las orejas, la cara, las patas y la cola. Son gatos cariñosos y sociales.'),

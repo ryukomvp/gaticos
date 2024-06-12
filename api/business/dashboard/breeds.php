@@ -57,52 +57,35 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'Raza inexistente';
             }
             break;
-            // case 'update':
-            //     $_POST = Validator::validateForm($_POST);
-            //     if (!$raza->setId($_POST['id'])) {
-            //         $result['exception'] = 'Categoría incorrecta';
-            //     } elseif (!$data = $raza->leerUnRegistro()) {
-            //         $result['exception'] = 'Categoría inexistente';
-            //     } elseif (!$raza->setNombre($_POST['nombre'])) {
-            //         $result['exception'] = 'Nombre incorrecto';
-            //     } elseif (!$raza->setDescripcion($_POST['descripcion'])) {
-            //         $result['exception'] = 'Descripción incorrecta';
-            //     } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
-            //         if ($raza->updateRow($data['imagen_categoria'])) {
-            //             $result['status'] = 1;
-            //             $result['message'] = 'Categoría modificada correctamente';
-            //         } else {
-            //             $result['exception'] = Database::getException();
-            //         }
-            //     } elseif (!$raza->setImagen($_FILES['archivo'])) {
-            //         $result['exception'] = Validator::getFileError();
-            //     } elseif ($raza->updateRow($data['imagen_categoria'])) {
-            //         $result['status'] = 1;
-            //         if (Validator::saveFile($_FILES['archivo'], $raza->getRuta(), $raza->getImagen())) {
-            //             $result['message'] = 'Categoría modificada correctamente';
-            //         } else {
-            //             $result['message'] = 'Categoría modificada pero no se guardó la imagen';
-            //         }
-            //     } else {
-            //         $result['exception'] = Database::getException();
-            //     }
-            //     break;
-            // case 'delete':
-            //     if (!$raza->setId($_POST['id_categoria'])) {
-            //         $result['exception'] = 'Categoría incorrecta';
-            //     } elseif (!$data = $raza->leerUnRegistro()) {
-            //         $result['exception'] = 'Categoría inexistente';
-            //     } elseif ($raza->deleteRow()) {
-            //         $result['status'] = 1;
-            //         if (Validator::deleteFile($raza->getRuta(), $data['imagen_categoria'])) {
-            //             $result['message'] = 'Categoría eliminada correctamente';
-            //         } else {
-            //             $result['message'] = 'Categoría eliminada pero no se borró la imagen';
-            //         }
-            //     } else {
-            //         $result['exception'] = Database::getException();
-            //     }
-            //     break;
+        case 'actualizar':
+            $_POST = Validator::validateForm($_POST);
+            if (!$raza->setId($_POST['id'])) {
+                $result['exception'] = 'Raza incorrecta';
+            } elseif (!$data = $raza->leerUnRegistro()) {
+                $result['exception'] = 'Raza inexistente';
+            } elseif (!$raza->setRaza($_POST['raza'])) {
+                $result['exception'] = 'Nombre incorrecto';
+            } elseif (!$raza->setInfo($_POST['info'])) {
+                $result['exception'] = 'Descripción incorrecta';
+            } elseif ($raza->updateRow($data['imagen_categoria'])) {
+                $result['status'] = 1;
+                $result['message'] = 'Raza modificada correctamente';
+            } else {
+                $result['exception'] = Database::getException();
+            }
+            break;
+        case 'eliminar':
+            if (!$raza->setId($_POST['id_raza'])) {
+                $result['exception'] = 'Categoría incorrecta';
+            } elseif (!$data = $raza->leerUnRegistro()) {
+                $result['exception'] = 'Categoría inexistente';
+            } elseif ($raza->deleteRow()) {
+                $result['status'] = 1;
+                $result['message'] = 'Categoría eliminada correctamente';
+            } else {
+                $result['exception'] = Database::getException();
+            }
+            break;
         default:
             $result['exception'] = 'Acción no disponible dentro de la sesión';
     }
