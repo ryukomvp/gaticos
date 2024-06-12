@@ -33,12 +33,12 @@ CREATE TABLE IF NOT EXISTS gaticos (
     REFERENCES razas(id_raza) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
--- CREATE TABLE IF NOT EXISTS usuarios (
---     id_usuario INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
---     usuario VARCHAR(40) NOT NULL UNIQUE,
---     clave VARCHAR(200) NOT NULL,
---     correo VARCHAR(120) NOT NULL
--- );
+CREATE TABLE IF NOT EXISTS usuarios (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    usuario VARCHAR(40) NOT NULL UNIQUE,
+    clave VARCHAR(200) NOT NULL,
+    correo VARCHAR(120) NOT NULL
+);
 
 -- CREATE TABLE IF NOT EXISTS bitacoras (
 --     id_bitacora INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
@@ -65,3 +65,6 @@ INSERT INTO razas(raza, info) VALUES
     ('Ragdoll', 'Los Ragdolls tienen un pelaje semilargo y sedoso y son conocidos por su temperamento dócil y cariñoso. A menudo se relajan completamente cuando se los recoge, de ahí su nombre.'),
     ('Siamés', 'Los Siameses tienen un cuerpo esbelto y elegante, con un pelaje corto y fino. Son muy vocales y sociales, y tienen ojos azules llamativos y un patrón de color en las puntas.'),
     ('Sphynx', 'Esta raza es conocida por su falta de pelaje, lo que le da una apariencia única. Los Sphynx son gatos muy cariñosos y enérgicos, y requieren un cuidado especial para su piel.');
+
+INSERT INTO usuarios(usuario, clave, correo) VALUES
+    ('us','$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', 'daniel123hernandez15@gmail.com');
