@@ -1,5 +1,5 @@
 // Constante para completar la ruta de la API.
-const RAZAS_API = 'business/dashboard/razas.php';
+const RAZAS_API = 'business/dashboard/breeds.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('fbuscador');
 // Constante para establecer el formulario de guardar.
@@ -68,10 +68,17 @@ async function fillTable(form = null) {
             JSON.dataset.forEach(row => {
                 // Se crean y concatenan las filas de la tabla con los datos de cada registro.
                 TBODY_ROWS.innerHTML += `
-                    <tr class="bg-white hover:bg-[#313131]">
+                    <tr class="hover:bg-[#313131]">
+                        <td>${row.id_raza}</td>
                         <td>${row.raza}</td>
                         <td>${row.info}</td>
-                        <td>editar</td>
+                        <td>
+                            <button class="text-[#333399] border border-[#333399] hover:text-[#EDEDED] hover:bg-[#333399] font-medium rounded-lg text-sm px-5 py-2.5 text-center m-2" type="button">
+                                <svg class="w-[30px] h-[30px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 1v5h-5M2 19v-5h5m10-4a8 8 0 0 1-14.947 3.97M1 10a8 8 0 0 1 14.947-3.97"/>
+                                </svg>
+                            </button>
+                        </td>
                     </tr>
                 `;
             });

@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase para la transferencia y acceso a datos.
-require_once('../../entities/dto/razas.php');
+require_once('../../entities/dto/breeds.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {

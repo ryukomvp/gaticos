@@ -2,7 +2,7 @@
 // Se incluye la clase para validar los datos de entrada.
 require_once('../../helpers/validator.php');
 // Se incluye la clase para heredar los métodos de acceso a datos.
-require_once('../../entities/dao/razas_queries.php');
+require_once('../../entities/dao/breeds_queries.php');
 /*
 *	Clase para manejar la transferencia (encapsulamiento) de datos de la entidad RAZAS.
 */
