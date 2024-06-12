@@ -7,16 +7,15 @@ CREATE TABLE IF NOT EXISTS razas (
     info VARCHAR(250) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS solicitudes_registro (
+CREATE TABLE IF NOT EXISTS solicitudes (
     id_solicitud INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nombre VARCHAR(40) NOT NULL,
     edad INT NOT NULL,
     id_raza INT NOT NULL,
-    color VARCHAR(40) NOT NULL,
     correo_responsable VARCHAR(120) NOT NULL,
     estado_solicitud enum('Aceptada','Rechazada') NOT NULL,
 
-    CONSTRAINT fk_raza_solicitud
+    CONSTRAINT fk_solicitud_raza
     FOREIGN KEY (id_raza)
     REFERENCES razas(id_raza) ON UPDATE CASCADE ON DELETE CASCADE
 );
@@ -26,9 +25,9 @@ CREATE TABLE IF NOT EXISTS gaticos (
     nombre VARCHAR(40) NOT NULL,
     edad INT NOT NULL,
     id_raza INT NOT NULL,
-    color VARCHAR(25),
+    correo_responsable VARCHAR(120) NOT NULL,
 
-    CONSTRAINT fk_raza_gatico
+    CONSTRAINT fk_gatico_raza
     FOREIGN KEY (id_raza)
     REFERENCES razas(id_raza) ON UPDATE CASCADE ON DELETE CASCADE
 );
@@ -42,16 +41,16 @@ CREATE TABLE IF NOT EXISTS usuarios (
 
 -- CREATE TABLE IF NOT EXISTS bitacoras (
 --     id_bitacora INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
---     id_usuario INT NOT NULL,
 --     id_solicitud INT NOT NULL,
+--     id_usuario INT NOT NULL,
 
---     CONSTRAINT fk_usuario_bitacora
---     FOREIGN KEY (id_usuario)
---     REFERENCES usuarios(id_usuario) ON UPDATE CASCADE ON DELETE CASCADE,
-
---     CONSTRAINT fk_solicitud_bitacora
+--     CONSTRAINT fk_bitacora_solicitud
 --     FOREIGN KEY (id_solicitud)
---     REFERENCES solicitudes_registro(id_solicitud) ON UPDATE CASCADE ON DELETE CASCADE
+--     REFERENCES solicitudes(id_solicitud) ON UPDATE CASCADE ON DELETE CASCADE,
+
+--     CONSTRAINT fk_bitacora_usuario
+--     FOREIGN KEY (id_usuario)
+--     REFERENCES usuarios(id_usuario) ON UPDATE CASCADE ON DELETE CASCADE
 -- );
 
 INSERT INTO razas(raza, info) VALUES
@@ -68,3 +67,10 @@ INSERT INTO razas(raza, info) VALUES
 
 INSERT INTO usuarios(usuario, clave, correo) VALUES
     ('us','$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', 'daniel123hernandez15@gmail.com');
+
+CREATE TRIGGER solicitudes_aceptadas AFTER UPDATE ON solicitudes
+FOR EACH ROW 
+BEGIN
+INSERT INTO gaticos(nombre, edad, id_raza, correo_responsable)
+VALUES(NEW.nombre, NEW.edad, NEW.id_raza, NEW.correo_responsable);
+END 
