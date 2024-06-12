@@ -12,15 +12,22 @@
 <body>
     <header></header>
     <main>
-        <form class="max-w-md mx-auto relative" method="post" id="fbuscador">
-            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                <img src="https://img.icons8.com/ios-filled/20/EDEDED/cat-footprint.png" alt="cat-footprint"/>
+        <!-- buscador -->
+        <form class="flex items-center max-w-sm mx-auto" method="post" id="fbuscador">
+            <div class="relative w-full">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <img src="https://img.icons8.com/ios-filled/20/EDEDED/cat-footprint.png" alt="cat-footprint"/>
+                </div>
+                <input type="text" name="buscador" id="buscador" class="w-full bg-[#1E1E1E] border border-[#EDEDED] text-[#EDEDED] focus:border-[#171717] block w-full p-4 ps-10 text-sm rounded-lg focus:ring-[#333399] focus:border-[#333399]" placeholder="Buscar razas">    
             </div>
-            <input type="text" name="buscador" id="buscador" class="w-full bg-[#1E1E1E] border border-[#EDEDED] text-[#EDEDED] focus:border-[#171717] block w-full p-4 ps-10 text-sm rounded-lg focus:ring-[#333399] focus:border-[#333399]" placeholder="Buscar razas">
-            <!-- <button type="submit" class="bg-[#1E1E1E] border border-[#333399] text-[#333399] absolute end-2.5 bottom-2.5 hover:bg-[#333399] hover:text-[#EDEDED] font-medium rounded-lg text-sm px-4 py-2"><svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-            </svg></button> -->
+            <!-- boton para crear un registro -->
+            <button class="text-[#333399] border border-[#333399] hover:text-[#EDEDED] hover:bg-[#333399] font-medium rounded-lg text-sm px-5 py-2.5 text-center m-2" type="button">
+                <svg class="w-[35px] h-[30px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/>
+                </svg> 
+            </button>
         </form>
+        <!-- tabla de registros -->
         <div class="relative overflow-x-auto sm:rounded-lg mt-4">
             <table class="w-full text-[#EDEDED] text-sm text-center">
                 <thead class="bg-[#171717] border-b border-[#313131] text-xl">

@@ -23,7 +23,8 @@ if (isset($_GET['action'])) {
         case 'search':
             $_POST = Validator::validateForm($_POST);
             if ($_POST['buscador'] == '') {
-                $result['exception'] = 'Ingrese un valor para buscar';
+                $result['dataset'] = $raza->readAll();
+                $result['status'] = 1;
             } elseif ($result['dataset'] = $raza->searchRows($_POST['buscador'])) {
                 $result['status'] = 1;
                 $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
