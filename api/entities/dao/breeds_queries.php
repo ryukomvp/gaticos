@@ -9,7 +9,7 @@ class RazasQueries
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
-    public function searchRows($value)
+    public function buscarRegistros($value)
     {
         $sql = 'SELECT id_raza, raza, info
                 FROM razas
@@ -19,15 +19,15 @@ class RazasQueries
         return Database::getRows($sql, $params);
     }
 
-    // public function createRow()
-    // {
-    //     $sql = 'INSERT INTO categoria(nombre_categoria, imagen_categoria, descripcion_categoria)
-    //             VALUES(?, ?, ?)';
-    //     $params = array($this->nombre, $this->imagen, $this->descripcion);
-    //     return Database::executeRow($sql, $params);
-    // }
+    public function crearRegistro()
+    {
+        $sql = 'INSERT INTO razas(raza, info)
+                VALUES(?, ?)';
+        $params = array($this->raza, $this->info);
+        return Database::executeRow($sql, $params);
+    }
 
-    public function readAll()
+    public function leerRegistros()
     {
         $sql = 'SELECT id_raza, raza, info
                 FROM razas
@@ -35,14 +35,14 @@ class RazasQueries
         return Database::getRows($sql);
     }
 
-    // public function readOne()
-    // {
-    //     $sql = 'SELECT id_categoria, nombre_categoria, imagen_categoria, descripcion_categoria
-    //             FROM categoria
-    //             WHERE id_categoria = ?';
-    //     $params = array($this->id);
-    //     return Database::getRow($sql, $params);
-    // }
+    public function leerUnRegistro()
+    {
+        $sql = 'SELECT id_raza, raza, info
+                FROM razas
+                WHERE id_raza = ?';
+        $params = array($this->id);
+        return Database::getRow($sql, $params);
+    }
 
     // public function updateRow($current_image)
     // {

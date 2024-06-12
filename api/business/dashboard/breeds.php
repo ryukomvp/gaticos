@@ -11,8 +11,8 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     switch ($_GET['action']) {
-        case 'readAll':
-            if ($result['dataset'] = $raza->readAll()) {
+        case 'leerRegistros':
+            if ($result['dataset'] = $raza->leerRegistros()) {
                 $result['status'] = 1;
             } elseif (Database::getException()) {
                 $result['exception'] = Database::getException();
@@ -20,57 +20,48 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'No hay datos registrados';
             }
             break;
-        case 'search':
+        case 'buscar':
             $_POST = Validator::validateForm($_POST);
             if ($_POST['buscador'] == '') {
-                $result['dataset'] = $raza->readAll();
+                $result['dataset'] = $raza->leerRegistros();
                 $result['status'] = 1;
-            } elseif ($result['dataset'] = $raza->searchRows($_POST['buscador'])) {
+            } elseif ($result['dataset'] = $raza->buscarRegistros($_POST['buscador'])) {
                 $result['status'] = 1;
-                $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
             } elseif (Database::getException()) {
                 $result['exception'] = Database::getException();
             } else {
                 $result['exception'] = 'No hay coincidencias';
             }
             break;
-            // case 'create':
-            //     $_POST = Validator::validateForm($_POST);
-            //     if (!$raza->setNombre($_POST['nombre'])) {
-            //         $result['exception'] = 'Nombre incorrecto';
-            //     } elseif (!$raza->setDescripcion($_POST['descripcion'])) {
-            //         $result['exception'] = 'Descripción incorrecta';
-            //     } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
-            //         $result['exception'] = 'Seleccione una imagen';
-            //     } elseif (!$raza->setImagen($_FILES['archivo'])) {
-            //         $result['exception'] = Validator::getFileError();
-            //     } elseif ($raza->createRow()) {
-            //         $result['status'] = 1;
-            //         if (Validator::saveFile($_FILES['archivo'], $raza->getRuta(), $raza->getImagen())) {
-            //             $result['message'] = 'Categoría creada correctamente';
-            //         } else {
-            //             $result['message'] = 'Categoría creada pero no se guardó la imagen';
-            //         }
-            //     } else {
-            //         $result['exception'] = Database::getException();
-            //     }
-            //     break;
-            // case 'readOne':
-            //     if (!$raza->setId($_POST['id_categoria'])) {
-            //         $result['exception'] = 'Categoría incorrecta';
-            //     } elseif ($result['dataset'] = $raza->readOne()) {
-            //         $result['status'] = 1;
-            //     } elseif (Database::getException()) {
-            //         $result['exception'] = Database::getException();
-            //     } else {
-            //         $result['exception'] = 'Categoría inexistente';
-            //     }
-            //     break;
+        case 'crear':
+            $_POST = Validator::validateForm($_POST);
+            if (!$raza->setRaza($_POST['raza'])) {
+                $result['exception'] = 'Nombre incorrecto';
+            } elseif (!$raza->setInfo($_POST['info'])) {
+                $result['exception'] = 'Descripción incorrecta';
+            } elseif ($raza->crearRegistro()) {
+                $result['status'] = 1;
+                $result['message'] = 'Raza ingresada correctamente';
+            } else {
+                $result['exception'] = Database::getException();
+            }
+            break;
+        case 'leerUnRegistro':
+            if (!$raza->setId($_POST['id_raza'])) {
+                $result['exception'] = 'Raza incorrecta';
+            } elseif ($result['dataset'] = $raza->leerUnRegistro()) {
+                $result['status'] = 1;
+            } elseif (Database::getException()) {
+                $result['exception'] = Database::getException();
+            } else {
+                $result['exception'] = 'Raza inexistente';
+            }
+            break;
             // case 'update':
             //     $_POST = Validator::validateForm($_POST);
             //     if (!$raza->setId($_POST['id'])) {
             //         $result['exception'] = 'Categoría incorrecta';
-            //     } elseif (!$data = $raza->readOne()) {
+            //     } elseif (!$data = $raza->leerUnRegistro()) {
             //         $result['exception'] = 'Categoría inexistente';
             //     } elseif (!$raza->setNombre($_POST['nombre'])) {
             //         $result['exception'] = 'Nombre incorrecto';
@@ -99,7 +90,7 @@ if (isset($_GET['action'])) {
             // case 'delete':
             //     if (!$raza->setId($_POST['id_categoria'])) {
             //         $result['exception'] = 'Categoría incorrecta';
-            //     } elseif (!$data = $raza->readOne()) {
+            //     } elseif (!$data = $raza->leerUnRegistro()) {
             //         $result['exception'] = 'Categoría inexistente';
             //     } elseif ($raza->deleteRow()) {
             //         $result['status'] = 1;
