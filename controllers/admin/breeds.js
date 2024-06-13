@@ -38,17 +38,17 @@ FORMULARIO.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(FORMULARIO);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(USUARIO_API, action, FORM);
+    const DATA = await dataFetch(RAZAS_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    if (JSON.status) {
+    if (DATA.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
         cargarRegistros();
         // Se cierra la caja de diálogo.
-        MODAL.close();
+        MODAL.hide();
         // Se muestra un mensaje de éxito.
-        sweetAlert(1, JSON.message, true);
+        sweetAlert(1, DATA.message, true);
     } else {
-        sweetAlert(2, JSON.exception, false);
+        sweetAlert(2, DATA.exception, false);
     }
 });
 
@@ -75,12 +75,12 @@ async function cargarRegistros(form = null) {
                         <td>${row.raza}</td>
                         <td class="p-4">${row.info}</td>
                         <td class="flex items-center">
-                            <button onclick="actualizarRegistro(${row.id_raza})" class="text-[#333399] border border-[#333399] hover:text-[#EDEDED] hover:bg-[#333399] font-medium rounded-lg text-sm px-2.5 py-2.5 text-center m-2" type="button">
+                            <button onclick="actualizar(${row.id_raza})" class="text-[#333399] border border-[#333399] hover:text-[#EDEDED] hover:bg-[#333399] font-medium rounded-lg text-sm px-2.5 py-2.5 text-center m-2" type="button">
                                 <svg class="w-[30px] h-[30px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 1v5h-5M2 19v-5h5m10-4a8 8 0 0 1-14.947 3.97M1 10a8 8 0 0 1 14.947-3.97"/>
                                 </svg>
                             </button>
-                            <button onclick="eliminarRegistro(${row.id_raza})" class="text-[#CA3E47] border border-[#CA3E47] hover:text-[#EDEDED] hover:bg-[#CA3E47] font-medium rounded-lg text-sm px-2.5 py-2.5 text-center m-2" type="button">
+                            <button onclick="eliminar(${row.id_raza})" class="text-[#CA3E47] border border-[#CA3E47] hover:text-[#EDEDED] hover:bg-[#CA3E47] font-medium rounded-lg text-sm px-2.5 py-2.5 text-center m-2" type="button">
                                 <svg class="w-[30px] h-[30px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
                                 </svg>
@@ -99,7 +99,7 @@ async function cargarRegistros(form = null) {
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
-function crearRegistro() {
+function crear() {
     // Se abre la caja de diálogo que contiene el formulario.
     MODAL.show();
     // Se restauran los elementos del formulario.
@@ -115,7 +115,7 @@ function crearRegistro() {
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
-async function actualizarRegistro(id) {
+async function actualizar(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
     FORM.append('id_raza', id);
@@ -145,7 +145,7 @@ async function actualizarRegistro(id) {
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
-async function eliminarRegistro(id) {
+async function eliminar(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
     const RESPONSE = await confirmAction('¿Desea eliminar la raza de forma permanente?');
     // Se verifica la respuesta del mensaje.

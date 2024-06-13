@@ -36,12 +36,12 @@ if (isset($_GET['action'])) {
         case 'crear':
             $_POST = Validator::validateForm($_POST);
             if (!$razas->setRaza($_POST['raza'])) {
-                $result['exception'] = 'Nombre incorrecto';
+                $result['exception'] = 'Raza incorrecta';
             } elseif (!$razas->setInfo($_POST['info'])) {
                 $result['exception'] = 'Descripción incorrecta';
             } elseif ($razas->crear()) {
                 $result['status'] = 1;
-                $result['message'] = 'Raza ingresada correctamente';
+                $result['message'] = 'Raza creada exitosamente';
             } else {
                 $result['exception'] = Database::getException();
             }
