@@ -118,7 +118,7 @@ function crear() {
 async function actualizar(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('id_raza', id);
+    FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
     const DATA = await fetchData(RAZAS_API, 'leerUnRegistro', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -152,7 +152,7 @@ async function eliminar(id) {
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('id_raza', id);
+        FORM.append('id', id);
         // Petición para eliminar el registro seleccionado.
         const DATA = await fetchData(RAZAS_API, 'eliminar', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.

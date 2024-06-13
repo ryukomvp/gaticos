@@ -61,7 +61,7 @@ if (isset($_GET['action'])) {
             $_POST = Validator::validateForm($_POST);
             if (!$razas->setId($_POST['id'])) {
                 $result['exception'] = 'Raza incorrecta';
-            } elseif (!$data = $razas->leerUnRegistro()) {
+            } elseif (!$razas->leerUnRegistro()) {
                 $result['exception'] = 'Raza inexistente';
             } elseif (!$razas->setRaza($_POST['raza'])) {
                 $result['exception'] = 'Nombre incorrecto';
@@ -75,9 +75,9 @@ if (isset($_GET['action'])) {
             }
             break;
         case 'eliminar':
-            if (!$razas->setId($_POST['id_raza'])) {
+            if (!$razas->setId($_POST['id'])) {
                 $result['exception'] = 'Raza incorrecta';
-            } elseif (!$data = $razas->leerUnRegistro()) {
+            } elseif (!$razas->leerUnRegistro()) {
                 $result['exception'] = 'Raza inexistente';
             } elseif ($razas->eliminar()) {
                 $result['status'] = 1;
