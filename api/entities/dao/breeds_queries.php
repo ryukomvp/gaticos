@@ -9,7 +9,7 @@ class RazasQueries
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
-    public function buscarRegistros($value)
+    public function buscar($value)
     {
         $sql = 'SELECT id_raza, raza, info
                 FROM razas
@@ -19,7 +19,7 @@ class RazasQueries
         return Database::getRows($sql, $params);
     }
 
-    public function crearRegistro()
+    public function crear()
     {
         $sql = 'INSERT INTO razas(raza, info)
                 VALUES(?, ?)';
@@ -44,7 +44,7 @@ class RazasQueries
         return Database::getRow($sql, $params);
     }
 
-    public function actualizarRegistro($current_image)
+    public function actualizar()
     {
         $sql = 'UPDATE razas
                 SET raza = ?, info = ?
@@ -53,7 +53,7 @@ class RazasQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function eliminarRegistro()
+    public function eliminar()
     {
         $sql = 'DELETE FROM razas
                 WHERE id_raza = ?';

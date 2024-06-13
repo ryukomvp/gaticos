@@ -7,12 +7,12 @@ if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $raza = new Razas;
+    $razas = new Razas;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     switch ($_GET['action']) {
         case 'leerRegistros':
-            if ($result['dataset'] = $raza->leerRegistros()) {
+            if ($result['dataset'] = $razas->leerRegistros()) {
                 $result['status'] = 1;
             } elseif (Database::getException()) {
                 $result['exception'] = Database::getException();
@@ -23,9 +23,9 @@ if (isset($_GET['action'])) {
         case 'buscar':
             $_POST = Validator::validateForm($_POST);
             if ($_POST['buscador'] == '') {
-                $result['dataset'] = $raza->leerRegistros();
+                $result['dataset'] = $razas->leerRegistros();
                 $result['status'] = 1;
-            } elseif ($result['dataset'] = $raza->buscarRegistros($_POST['buscador'])) {
+            } elseif ($result['dataset'] = $razas->buscar($_POST['buscador'])) {
                 $result['status'] = 1;
             } elseif (Database::getException()) {
                 $result['exception'] = Database::getException();
@@ -35,11 +35,11 @@ if (isset($_GET['action'])) {
             break;
         case 'crear':
             $_POST = Validator::validateForm($_POST);
-            if (!$raza->setRaza($_POST['raza'])) {
+            if (!$razas->setRaza($_POST['raza'])) {
                 $result['exception'] = 'Nombre incorrecto';
-            } elseif (!$raza->setInfo($_POST['info'])) {
+            } elseif (!$razas->setInfo($_POST['info'])) {
                 $result['exception'] = 'Descripción incorrecta';
-            } elseif ($raza->crearRegistro()) {
+            } elseif ($razas->crear()) {
                 $result['status'] = 1;
                 $result['message'] = 'Raza ingresada correctamente';
             } else {
@@ -47,9 +47,9 @@ if (isset($_GET['action'])) {
             }
             break;
         case 'leerUnRegistro':
-            if (!$raza->setId($_POST['id_raza'])) {
+            if (!$razas->setId($_POST['id_raza'])) {
                 $result['exception'] = 'Raza incorrecta';
-            } elseif ($result['dataset'] = $raza->leerUnRegistro()) {
+            } elseif ($result['dataset'] = $razas->leerUnRegistro()) {
                 $result['status'] = 1;
             } elseif (Database::getException()) {
                 $result['exception'] = Database::getException();
@@ -59,15 +59,15 @@ if (isset($_GET['action'])) {
             break;
         case 'actualizar':
             $_POST = Validator::validateForm($_POST);
-            if (!$raza->setId($_POST['id'])) {
+            if (!$razas->setId($_POST['id'])) {
                 $result['exception'] = 'Raza incorrecta';
-            } elseif (!$data = $raza->leerUnRegistro()) {
+            } elseif (!$data = $razas->leerUnRegistro()) {
                 $result['exception'] = 'Raza inexistente';
-            } elseif (!$raza->setRaza($_POST['raza'])) {
+            } elseif (!$razas->setRaza($_POST['raza'])) {
                 $result['exception'] = 'Nombre incorrecto';
-            } elseif (!$raza->setInfo($_POST['info'])) {
+            } elseif (!$razas->setInfo($_POST['info'])) {
                 $result['exception'] = 'Descripción incorrecta';
-            } elseif ($raza->updateRow($data['imagen_categoria'])) {
+            } elseif ($razas->actualizar()) {
                 $result['status'] = 1;
                 $result['message'] = 'Raza modificada correctamente';
             } else {
@@ -75,13 +75,13 @@ if (isset($_GET['action'])) {
             }
             break;
         case 'eliminar':
-            if (!$raza->setId($_POST['id_raza'])) {
-                $result['exception'] = 'Categoría incorrecta';
-            } elseif (!$data = $raza->leerUnRegistro()) {
-                $result['exception'] = 'Categoría inexistente';
-            } elseif ($raza->deleteRow()) {
+            if (!$razas->setId($_POST['id_raza'])) {
+                $result['exception'] = 'Raza incorrecta';
+            } elseif (!$data = $razas->leerUnRegistro()) {
+                $result['exception'] = 'Raza inexistente';
+            } elseif ($razas->eliminar()) {
                 $result['status'] = 1;
-                $result['message'] = 'Categoría eliminada correctamente';
+                $result['message'] = 'Raza eliminada correctamente';
             } else {
                 $result['exception'] = Database::getException();
             }

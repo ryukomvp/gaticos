@@ -38,17 +38,17 @@ FORMULARIO.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(FORMULARIO);
     // Petición para guardar los datos del formulario.
-    const DATA = await fetchData(RAZAS_API, action, FORM);
+    const JSON = await dataFetch(USUARIO_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    if (DATA.status) {
+    if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
         cargarRegistros();
         // Se cierra la caja de diálogo.
         MODAL.close();
         // Se muestra un mensaje de éxito.
-        sweetAlert(1, DATA.message, true);
+        sweetAlert(1, JSON.message, true);
     } else {
-        sweetAlert(2, DATA.exception, false);
+        sweetAlert(2, JSON.exception, false);
     }
 });
 
@@ -129,6 +129,8 @@ async function actualizarRegistro(id) {
         FORMULARIO.reset();
         // Se asigna título para la caja de diálogo.
         TITULO_MODAL.textContent = 'Actualizar raza';
+        // Se asigna texto al botón de acción.
+        BTN_ACCION.textContent = 'Actualizar';
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = DATA.dataset.id_raza;
         document.getElementById('raza').value = DATA.dataset.raza;
