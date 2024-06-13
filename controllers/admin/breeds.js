@@ -72,7 +72,7 @@ async function cargarRegistros(form = null) {
                 REGISTROS.innerHTML += `
                     <tr class="hover:bg-[#313131]">
                         <td>${row.id_raza}</td>
-                        <td>${row.raza}</td>
+                        <td class="p-4">${row.raza}</td>
                         <td class="p-4">${row.info}</td>
                         <td class="flex items-center">
                             <button onclick="actualizar(${row.id_raza})" class="text-[#333399] border border-[#333399] hover:text-[#EDEDED] hover:bg-[#333399] font-medium rounded-lg text-sm px-2.5 py-2.5 text-center m-2" type="button">
@@ -132,7 +132,7 @@ async function actualizar(id) {
         // Se asigna texto al botón de acción.
         BTN_ACCION.textContent = 'Actualizar';
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = DATA.dataset.id_raza;
+        document.getElementById('id').value = DATA.dataset.id;
         document.getElementById('raza').value = DATA.dataset.raza;
         document.getElementById('info').value = DATA.dataset.info;
     } else {

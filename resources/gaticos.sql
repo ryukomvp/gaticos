@@ -68,9 +68,11 @@ INSERT INTO razas(raza, info) VALUES
 INSERT INTO usuarios(usuario, clave, correo) VALUES
     ('us','$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', 'daniel123hernandez15@gmail.com');
 
+DELIMITER $$
 CREATE TRIGGER solicitudes_aceptadas AFTER UPDATE ON solicitudes
 FOR EACH ROW 
 BEGIN
 INSERT INTO gaticos(nombre, edad, id_raza, correo_responsable)
 VALUES(NEW.nombre, NEW.edad, NEW.id_raza, NEW.correo_responsable);
-END 
+END $$
+DELIMITER ;
