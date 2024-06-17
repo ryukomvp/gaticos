@@ -75,7 +75,7 @@ if (isset($_GET['action'])) {
             }
             break;
         case 'eliminar':
-            if (!$razas->setId($_POST['id'])) {
+            if (!$razas->setId($_POST['id_raza'])) {
                 $result['exception'] = 'Raza incorrecta';
             } elseif (!$razas->leerUnRegistro()) {
                 $result['exception'] = 'Raza inexistente';

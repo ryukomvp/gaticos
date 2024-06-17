@@ -391,5 +391,3 @@ async function cerrarSesion() {
         }
     }
 }
-
-

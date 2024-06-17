@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS solicitudes (
     edad INT NOT NULL,
     id_raza INT NOT NULL,
     correo_responsable VARCHAR(120) NOT NULL,
-    estado_solicitud enum('Aceptada','Rechazada') NOT NULL,
+    estado_solicitud enum('Aceptada','Rechazada','Por revisar') NOT NULL DEFAULT 'Por revisar',
 
     CONSTRAINT fk_solicitud_raza
     FOREIGN KEY (id_raza)

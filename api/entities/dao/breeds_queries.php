@@ -40,7 +40,7 @@ class RazasQueries
         $sql = 'SELECT id_raza, raza, info
                 FROM razas
                 WHERE id_raza = ?';
-        $params = array($this->id);
+        $params = array($this->id_raza);
         return Database::getRow($sql, $params);
     }
 
@@ -49,7 +49,7 @@ class RazasQueries
         $sql = 'UPDATE razas
                 SET raza = ?, info = ?
                 WHERE id_raza = ?';
-        $params = array($this->raza, $this->info, $this->id);
+        $params = array($this->raza, $this->info, $this->id_raza);
         return Database::executeRow($sql, $params);
     }
 
@@ -57,7 +57,7 @@ class RazasQueries
     {
         $sql = 'DELETE FROM razas
                 WHERE id_raza = ?';
-        $params = array($this->id);
+        $params = array($this->id_raza);
         return Database::executeRow($sql, $params);
     }
 }

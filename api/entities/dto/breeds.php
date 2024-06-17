@@ -9,7 +9,7 @@ require_once('../../entities/dao/breeds_queries.php');
 class Razas extends RazasQueries
 {
     // Declaración de atributos (propiedades).
-    protected $id = null;
+    protected $id_raza = null;
     protected $raza = null;
     protected $info = null;
 
@@ -19,7 +19,7 @@ class Razas extends RazasQueries
     public function setId($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->id = $value;
+            $this->id_raza = $value;
             return true;
         } else {
             return false;
@@ -51,7 +51,7 @@ class Razas extends RazasQueries
     */
     public function getId()
     {
-        return $this->id;
+        return $this->id_raza;
     }
 
     public function getRaza()

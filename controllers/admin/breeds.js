@@ -38,7 +38,7 @@ FORMULARIO.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(FORMULARIO);
     // Petición para guardar los datos del formulario.
-    const DATA = await dataFetch(RAZAS_API, action, FORM);
+    const DATA = await fetchData(RAZAS_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
@@ -71,7 +71,7 @@ async function cargarRegistros(form = null) {
                 // Se crean y concatenan las filas de la tabla con los datos de cada registro.
                 REGISTROS.innerHTML += `
                     <tr class="hover:bg-[#313131]">
-                        <td>${row.id_raza}</td>
+                        <!-- <td>${row.id_raza}</td> -->
                         <td class="p-4">${row.raza}</td>
                         <td class="p-4">${row.info}</td>
                         <td class="flex items-center">
@@ -118,7 +118,7 @@ function crear() {
 async function actualizar(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('id_raza', id);
+    FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
     const DATA = await fetchData(RAZAS_API, 'leerUnRegistro', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
