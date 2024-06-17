@@ -11,28 +11,6 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     switch ($_GET['action']) {
-        case 'leerRegistros':
-            if ($result['dataset'] = $solicitudes->leerRegistros()) {
-                $result['status'] = 1;
-            } elseif (Database::getException()) {
-                $result['exception'] = Database::getException();
-            } else {
-                $result['exception'] = 'No hay datos registrados';
-            }
-            break;
-            // case 'buscar':
-            //     $_POST = Validator::validateForm($_POST);
-            //     if ($_POST['buscador'] == '') {
-            //         $result['dataset'] = $solicitudes->leerRegistros();
-            //         $result['status'] = 1;
-            //     } elseif ($result['dataset'] = $solicitudes->buscar($_POST['buscador'])) {
-            //         $result['status'] = 1;
-            //     } elseif (Database::getException()) {
-            //         $result['exception'] = Database::getException();
-            //     } else {
-            //         $result['exception'] = 'No hay coincidencias';
-            //     }
-            //     break;
         case 'crear':
             $_POST = Validator::validateForm($_POST);
             if (!$solicitudes->setNombre($_POST['nombre'])) {
@@ -50,46 +28,6 @@ if (isset($_GET['action'])) {
                 $result['exception'] = Database::getException();
             }
             break;
-            // case 'leerUnRegistro':
-            //     if (!$solicitudes->setId($_POST['id_raza'])) {
-            //         $result['exception'] = 'Raza incorrecta';
-            //     } elseif ($result['dataset'] = $solicitudes->leerUnRegistro()) {
-            //         $result['status'] = 1;
-            //     } elseif (Database::getException()) {
-            //         $result['exception'] = Database::getException();
-            //     } else {
-            //         $result['exception'] = 'Raza inexistente';
-            //     }
-            //     break;
-            // case 'actualizar':
-            //     $_POST = Validator::validateForm($_POST);
-            //     if (!$solicitudes->setId($_POST['id'])) {
-            //         $result['exception'] = 'Raza incorrecta';
-            //     } elseif (!$solicitudes->leerUnRegistro()) {
-            //         $result['exception'] = 'Raza inexistente';
-            //     } elseif (!$solicitudes->setRaza($_POST['raza'])) {
-            //         $result['exception'] = 'Nombre incorrecto';
-            //     } elseif (!$solicitudes->setInfo($_POST['info'])) {
-            //         $result['exception'] = 'Descripción incorrecta';
-            //     } elseif ($solicitudes->actualizar()) {
-            //         $result['status'] = 1;
-            //         $result['message'] = 'Raza modificada correctamente';
-            //     } else {
-            //         $result['exception'] = Database::getException();
-            //     }
-            //     break;
-            // case 'eliminar':
-            //     if (!$solicitudes->setId($_POST['id_raza'])) {
-            //         $result['exception'] = 'Raza incorrecta';
-            //     } elseif (!$solicitudes->leerUnRegistro()) {
-            //         $result['exception'] = 'Raza inexistente';
-            //     } elseif ($solicitudes->eliminar()) {
-            //         $result['status'] = 1;
-            //         $result['message'] = 'Raza eliminada correctamente';
-            //     } else {
-            //         $result['exception'] = Database::getException();
-            //     }
-            //     break;
         default:
             $result['exception'] = 'Acción no disponible dentro de la sesión';
     }

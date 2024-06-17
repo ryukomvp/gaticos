@@ -47,7 +47,7 @@ if (isset($_GET['action'])) {
             }
             break;
         case 'leerUnRegistro':
-            if (!$razas->setId($_POST['id_raza'])) {
+            if (!$razas->setId($_POST['id'])) {
                 $result['exception'] = 'Raza incorrecta';
             } elseif ($result['dataset'] = $razas->leerUnRegistro()) {
                 $result['status'] = 1;

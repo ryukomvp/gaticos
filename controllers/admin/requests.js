@@ -1,5 +1,5 @@
 // Constante para completar la ruta de la API.
-const RAZAS_API = 'business/dashboard/breeds.php';
+const SOLICITUDES_API = 'business/dashboard/requests.php';
 // Constante para establecer el formulario de buscar.
 const F_BUSCADOR = document.getElementById('fbuscador');
 // Constante para establecer el formulario de guardar.
@@ -38,7 +38,7 @@ FORMULARIO.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(FORMULARIO);
     // Petición para guardar los datos del formulario.
-    const DATA = await dataFetch(RAZAS_API, action, FORM);
+    const DATA = await dataFetch(SOLICITUDES_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
@@ -63,7 +63,7 @@ async function cargarRegistros(form = null) {
         // Se verifica la acción a realizar.
         (form) ? action = 'buscar' : action = 'leerRegistros';
         // Petición para obtener los registros disponibles.
-        const DATA = await dataFetch(RAZAS_API, action, form);
+        const DATA = await dataFetch(SOLICITUDES_API, action, form);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (DATA.status) {
             // Se recorre el conjunto de registros fila por fila.
@@ -71,16 +71,18 @@ async function cargarRegistros(form = null) {
                 // Se crean y concatenan las filas de la tabla con los datos de cada registro.
                 REGISTROS.innerHTML += `
                     <tr class="hover:bg-[#313131]">
-                        <!-- <td>${row.id_raza}</td> -->
+                        <!-- <td>${row.id_solicitud}</td> -->
+                        <td class="p-4">${row.nombre}</td>
+                        <td class="p-4">${row.edad}</td>
                         <td class="p-4">${row.raza}</td>
-                        <td class="p-4">${row.info}</td>
+                        <td class="p-4">${row.estado_solicitud}</td>
                         <td class="flex items-center">
-                            <button onclick="actualizar(${row.id_raza})" class="text-[#333399] border border-[#333399] hover:text-[#EDEDED] hover:bg-[#333399] font-medium rounded-lg text-sm px-2.5 py-2.5 text-center m-2" type="button">
+                            <button onclick="actualizar(${row.id_solicitud})" class="text-[#333399] border border-[#333399] hover:text-[#EDEDED] hover:bg-[#333399] font-medium rounded-lg text-sm px-2.5 py-2.5 text-center m-2" type="button">
                                 <svg class="w-[30px] h-[30px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 1v5h-5M2 19v-5h5m10-4a8 8 0 0 1-14.947 3.97M1 10a8 8 0 0 1 14.947-3.97"/>
                                 </svg>
                             </button>
-                            <button onclick="eliminar(${row.id_raza})" class="text-[#CA3E47] border border-[#CA3E47] hover:text-[#EDEDED] hover:bg-[#CA3E47] font-medium rounded-lg text-sm px-2.5 py-2.5 text-center m-2" type="button">
+                            <button onclick="eliminar(${row.id_solicitud})" class="text-[#CA3E47] border border-[#CA3E47] hover:text-[#EDEDED] hover:bg-[#CA3E47] font-medium rounded-lg text-sm px-2.5 py-2.5 text-center m-2" type="button">
                                 <svg class="w-[30px] h-[30px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
                                 </svg>
@@ -120,7 +122,7 @@ async function actualizar(id) {
     const FORM = new FormData();
     FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
-    const DATA = await dataFetch(RAZAS_API, 'leerUnRegistro', FORM);
+    const DATA = await dataFetch(SOLICITUDES_API, 'leerUnRegistro', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         // Se abre la caja de diálogo que contiene el formulario.
@@ -154,7 +156,7 @@ async function eliminar(id) {
         const FORM = new FormData();
         FORM.append('id_raza', id);
         // Petición para eliminar el registro seleccionado.
-        const DATA = await dataFetch(RAZAS_API, 'eliminar', FORM);
+        const DATA = await dataFetch(SOLICITUDES_API, 'eliminar', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (DATA.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.

@@ -1,5 +1,5 @@
 // Constante para completar la ruta de la API.
-const SOLICITUDES_API = 'business/public/request.php';
+const SOLICITUDES_API = 'business/public/requests.php';
 const RAZAS_API = 'business/dashboard/breeds.php';
 // Constante para establecer el formulario de guardar.
 const FORMULARIO = document.getElementById('formulario');
@@ -17,11 +17,11 @@ FORMULARIO.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(FORMULARIO);
     // Petición para guardar los datos del formulario.
-    const DATA = await fetchData(SOLICITUDES_API, 'crear', FORM);
+    const DATA = await dataFetch(SOLICITUDES_API, 'crear', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         // Se muestra un mensaje de éxito.
-        sweetAlert(1, DATA.message, true, 'index.html');
+        sweetAlert(1, DATA.message, true);
     } else {
         sweetAlert(2, DATA.exception, false);
     }

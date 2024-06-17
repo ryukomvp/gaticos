@@ -19,10 +19,10 @@
                 <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                     <img src="https://img.icons8.com/ios-filled/20/EDEDED/cat-footprint.png" alt="cat-footprint"/>
                 </div>
-                <input type="text" name="buscador" id="buscador" class="w-full bg-[#1E1E1E] border border-[#EDEDED] text-[#EDEDED] focus:border-[#171717] block w-full p-4 ps-10 text-sm rounded-lg focus:ring-[#333399] focus:border-[#333399]" placeholder="Buscar razas">    
+                <input type="text" name="buscador" id="buscador" class="w-full bg-[#1E1E1E] border border-[#EDEDED] text-[#EDEDED] focus:border-[#171717] block w-full p-4 ps-10 text-sm rounded-lg focus:ring-[#333399] focus:border-[#333399]" placeholder="Buscar solicitud">    
             </form>
             <!-- boton para crear un registro -->
-            <button onclick="crear()" class="text-[#333399] border border-[#333399] hover:text-[#EDEDED] hover:bg-[#333399] font-medium rounded-lg text-sm px-2.5 py-2.5 text-center m-2" type="button">
+            <button onclick="crear()" class="text-[#333399] border border-[#333399] hover:text-[#EDEDED] hover:bg-[#333399] font-medium rounded-lg text-sm px-2.5 py-2.5 text-center m-2" type="button" hidden>
                 <svg class="w-[20px] h-[20px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/>
                 </svg> 
@@ -52,6 +52,6 @@
     <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
     <script type="text/javascript" src="../../controllers/components.js"></script>
     <script type="text/javascript" src="../../controllers/admin/template.js"></script>
-    <!-- <script type="text/javascript" src="../../controllers/admin/breeds.js"></script> -->
+    <script type="text/javascript" src="../../controllers/admin/requests.js"></script>
 </body>
 </html>
