@@ -13,7 +13,8 @@ CREATE TABLE IF NOT EXISTS solicitudes (
     edad INT NOT NULL,
     id_raza INT NOT NULL,
     correo_responsable VARCHAR(120) NOT NULL,
-    estado_solicitud enum('Aceptada','Rechazada','Por revisar') NOT NULL DEFAULT 'Por revisar',
+    estado_solicitud enum('Aprobada','Rechazada','Por revisar') NOT NULL DEFAULT 'Por revisar',
+    fecha datetime NOT NULL DEFAULT CURRENT_DATE,
 
     CONSTRAINT fk_solicitud_raza
     FOREIGN KEY (id_raza)
@@ -32,12 +33,12 @@ CREATE TABLE IF NOT EXISTS gaticos (
     REFERENCES razas(id_raza) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS usuarios (
-    id_usuario INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    usuario VARCHAR(40) NOT NULL UNIQUE,
-    clave VARCHAR(200) NOT NULL,
-    correo VARCHAR(120) NOT NULL
-);
+-- CREATE TABLE IF NOT EXISTS usuarios (
+--     id_usuario INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+--     usuario VARCHAR(40) NOT NULL UNIQUE,
+--     clave VARCHAR(200) NOT NULL,
+--     correo VARCHAR(120) NOT NULL
+-- );
 
 -- CREATE TABLE IF NOT EXISTS bitacoras (
 --     id_bitacora INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
@@ -65,14 +66,15 @@ INSERT INTO razas(raza, info) VALUES
     ('Siamés', 'Los Siameses tienen un cuerpo esbelto y elegante, con un pelaje corto y fino. Son muy vocales y sociales, y tienen ojos azules llamativos y un patrón de color en las puntas.'),
     ('Sphynx', 'Esta raza es conocida por su falta de pelaje, lo que le da una apariencia única. Los Sphynx son gatos muy cariñosos y enérgicos, y requieren un cuidado especial para su piel.');
 
-INSERT INTO usuarios(usuario, clave, correo) VALUES
-    ('us','$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', 'daniel123hernandez15@gmail.com');
+-- INSERT INTO usuarios(usuario, clave, correo) VALUES
+--     ('us','$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', 'daniel123hernandez15@gmail.com');
 
 DELIMITER $$
-CREATE TRIGGER solicitudes_aceptadas AFTER UPDATE ON solicitudes
+CREATE TRIGGER solicitudes_aprobadas AFTER UPDATE ON solicitudes
 FOR EACH ROW 
-BEGIN
+IF OLD.estado_solicitud != 'Aprobada' AND NEW.estado_solicitud = 'Aprobada' THEN
 INSERT INTO gaticos(nombre, edad, id_raza, correo_responsable)
 VALUES(NEW.nombre, NEW.edad, NEW.id_raza, NEW.correo_responsable);
-END $$
+END IF;
+$$
 DELIMITER ;
