@@ -9,15 +9,15 @@ class SolicitudesQueries
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
-    public function buscar($value)
-    {
-        $sql = 'SELECT id_solicitud, nombre, edad, id_raza, estado_solicitud
-                FROM solicitudes
-                WHERE raza LIKE ?
-                ORDER BY raza';
-        $params = array("%$value%");
-        return Database::getRows($sql, $params);
-    }
+    // public function buscar($value)
+    // {
+    //     $sql = 'SELECT id_solicitud, nombre, edad, id_raza, correo_responsable, estado_solicitud
+    //             FROM solicitudes
+    //             WHERE nombre LIKE ?
+    //             ORDER BY raza';
+    //     $params = array("%$value%");
+    //     return Database::getRows($sql, $params);
+    // }
 
     public function crear()
     {
@@ -29,36 +29,38 @@ class SolicitudesQueries
 
     public function leerRegistros()
     {
-        $sql = 'SELECT id_solicitud, nombre, edad, raza
+        $sql = 'SELECT id_solicitud, nombre, edad, raza, correo_responsable, estado_solicitud, fecha
                 FROM solicitudes
                 INNER JOIN razas USING(id_raza)
                 ORDER BY id_solicitud';
         return Database::getRows($sql);
     }
 
-    // public function leerUnRegistro()
-    // {
-    //     $sql = 'SELECT id_raza, raza, info
-    //             FROM razas
-    //             WHERE id_raza = ?';
-    //     $params = array($this->id_raza);
-    //     return Database::getRow($sql, $params);
-    // }
+    public function leerUnRegistro()
+    {
+        $sql = 'SELECT id_solicitud, nombre, edad, raza, correo_responsable, estado_solicitud, fecha
+                FROM solicitudes
+                INNER JOIN razas USING(id_raza)
+                WHERE id_solicitud = ?';
+        $params = array($this->id_solicitud);
+        return Database::getRow($sql, $params);
+    }
 
-    // public function actualizar()
-    // {
-    //     $sql = 'UPDATE razas
-    //             SET raza = ?, info = ?
-    //             WHERE id_raza = ?';
-    //     $params = array($this->raza, $this->info, $this->id_raza);
-    //     return Database::executeRow($sql, $params);
-    // }
+    public function aprobar()
+    {
+        $sql = "UPDATE solicitudes
+                SET estado_solicitud = 'Aprobada'
+                WHERE id_solicitud = ?";
+        $params = array($this->id_solicitud);
+        return Database::executeRow($sql, $params);
+    }
 
-    // public function eliminar()
-    // {
-    //     $sql = 'DELETE FROM razas
-    //             WHERE id_raza = ?';
-    //     $params = array($this->id_raza);
-    //     return Database::executeRow($sql, $params);
-    // }
+    public function rechazar()
+    {
+        $sql = "UPDATE solicitudes
+                SET estado_solicitud = 'Rechazada'
+                WHERE id_solicitud = ?";
+        $params = array($this->id_solicitud);
+        return Database::executeRow($sql, $params);
+    }
 }

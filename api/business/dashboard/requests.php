@@ -20,59 +20,43 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'No hay datos registrados';
             }
             break;
-        case 'buscar':
-            $_POST = Validator::validateForm($_POST);
-            if ($_POST['buscador'] == '') {
-                $result['dataset'] = $solicitudes->leerRegistros();
-                $result['status'] = 1;
-            } elseif ($result['dataset'] = $solicitudes->buscar($_POST['buscador'])) {
-                $result['status'] = 1;
-            } elseif (Database::getException()) {
-                $result['exception'] = Database::getException();
-            } else {
-                $result['exception'] = 'No hay coincidencias';
-            }
-            break;
-            // case 'leerUnRegistro':
-            //     if (!$solicitudes->setId($_POST['id_raza'])) {
-            //         $result['exception'] = 'Raza incorrecta';
-            //     } elseif ($result['dataset'] = $solicitudes->leerUnRegistro()) {
+            // case 'buscar':
+            //     $_POST = Validator::validateForm($_POST);
+            //     if ($_POST['buscador'] == '') {
+            //         $result['dataset'] = $solicitudes->leerRegistros();
+            //         $result['status'] = 1;
+            //     } elseif ($result['dataset'] = $solicitudes->buscar($_POST['buscador'])) {
             //         $result['status'] = 1;
             //     } elseif (Database::getException()) {
             //         $result['exception'] = Database::getException();
             //     } else {
-            //         $result['exception'] = 'Raza inexistente';
+            //         $result['exception'] = 'No hay coincidencias';
             //     }
             //     break;
-            // case 'actualizar':
-            //     $_POST = Validator::validateForm($_POST);
-            //     if (!$solicitudes->setId($_POST['id'])) {
-            //         $result['exception'] = 'Raza incorrecta';
-            //     } elseif (!$solicitudes->leerUnRegistro()) {
-            //         $result['exception'] = 'Raza inexistente';
-            //     } elseif (!$solicitudes->setRaza($_POST['raza'])) {
-            //         $result['exception'] = 'Nombre incorrecto';
-            //     } elseif (!$solicitudes->setInfo($_POST['info'])) {
-            //         $result['exception'] = 'Descripción incorrecta';
-            //     } elseif ($solicitudes->actualizar()) {
-            //         $result['status'] = 1;
-            //         $result['message'] = 'Raza modificada correctamente';
-            //     } else {
-            //         $result['exception'] = Database::getException();
-            //     }
-            //     break;
-            // case 'eliminar':
-            //     if (!$solicitudes->setId($_POST['id_raza'])) {
-            //         $result['exception'] = 'Raza incorrecta';
-            //     } elseif (!$solicitudes->leerUnRegistro()) {
-            //         $result['exception'] = 'Raza inexistente';
-            //     } elseif ($solicitudes->eliminar()) {
-            //         $result['status'] = 1;
-            //         $result['message'] = 'Raza eliminada correctamente';
-            //     } else {
-            //         $result['exception'] = Database::getException();
-            //     }
-            //     break;
+        case 'aprobar':
+            if (!$solicitudes->setId($_POST['id_solicitud'])) {
+                $result['exception'] = 'Solicitud incorrecta';
+            } elseif (!$solicitudes->leerUnRegistro()) {
+                $result['exception'] = 'Solicitud inexistente';
+            } elseif ($solicitudes->aprobar()) {
+                $result['status'] = 1;
+                $result['message'] = 'Solicitud aprobada correctamente';
+            } else {
+                $result['exception'] = Database::getException();
+            }
+            break;
+        case 'rechazar':
+            if (!$solicitudes->setId($_POST['id_solicitud'])) {
+                $result['exception'] = 'Solicitud incorrecta';
+            } elseif (!$solicitudes->leerUnRegistro()) {
+                $result['exception'] = 'Solicitud inexistente';
+            } elseif ($solicitudes->rechazar()) {
+                $result['status'] = 1;
+                $result['message'] = 'Solicitud rechazada correctamente';
+            } else {
+                $result['exception'] = Database::getException();
+            }
+            break;
         default:
             $result['exception'] = 'Acción no disponible dentro de la sesión';
     }
